@@ -1,0 +1,61 @@
+.carousel-container {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  margin: 0 auto;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+.carousel-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform-origin: center center -150px;
+  transform: rotateY(calc(var(--angle) * 1deg));
+  transition: transform 0.5s;
+}
+
+button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 24px;
+  font-weight: bold;
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+button:first-of-type {
+  left: 0;
+}
+
+button:last-of-type {
+  right: 0;
+}
+
+.carousel-image:nth-child(1) {
+  --angle: 0;
+}
+
+.carousel-image:nth-child(2) {
+  --angle: 60;
+}
+
+.carousel-image:nth-child(3) {
+  --angle: 120;
+}
+
+.carousel-image:nth-child(4) {
+  --angle: 180;
+}
+
+.carousel-image:nth-child(5) {
+  --angle: 240;
+}
+
