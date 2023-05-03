@@ -1,44 +1,42 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
 
-class App extends Component {
-  state = {
-    images: [
-      'https://via.placeholder.com/500x400.png?text=Image+1',
-      'https://via.placeholder.com/500x400.png?text=Image+1',
-      'https://via.placeholder.com/500x400.png?text=Image+1',
-      'https://via.placeholder.com/500x400.png?text=Image+1',
-      'https://via.placeholder.com/500x400.png?text=Image+1',
-    ],
-    currentImageIndex: 0,
+const images = [
+  "https://via.placeholder.com/500x400.png?text=Image+1",
+  "https://example.com/image2.png",
+  "https://example.com/image3.jpg",
+  "https://example.com/image4.png",
+  "https://example.com/image5.jpg",
+];
+
+function App() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const handlePrevSlide = () => {
+    setCurrentSlide((currentSlide - 1 + images.length) % images.length);
   };
 
-  render() {
-    const { images, currentImageIndex } = this.state;
-  
-    return (
-      <div className="carousel-container">
-        <img src={images[currentImageIndex]} className="carousel-image" alt="" />
-        <button onClick={this.prevImage}>Prev</button>
-        <button onClick={this.nextImage}>Next</button>
+  const handleNextSlide = () => {
+    setCurrentSlide((currentSlide + 1) % images.length);
+  };
+
+  return (
+    <div className="carousel-container">
+      <div className="carousel-slide" style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
+        {images.map((image, index) => (
+          <div key={index} className="carousel-item">
+            <img src={image} alt={`Slide ${index}`} />
+          </div>
+        ))}
       </div>
-    );
-  }
-  prevImage = () => {
-    const { images, currentImageIndex } = this.state;
-    const lastIndex = images.length - 1;
-    const newIndex = currentImageIndex === 0 ? lastIndex : currentImageIndex - 1;
-    this.setState({ currentImageIndex: newIndex });
-  };
-  
-  nextImage = () => {
-    const { images, currentImageIndex } = this.state;
-    const lastIndex = images.length - 1;
-    const newIndex = currentImageIndex === lastIndex ? 0 : currentImageIndex + 1;
-    this.setState({ currentImageIndex: newIndex });
-  };
-    
+      <button className="carousel-prev" onClick={handlePrevSlide}>
+        &lt;
+      </button>
+      <button className="carousel-next" onClick={handleNextSlide}>
+        &gt;
+      </button>
+    </div>
+  );
 }
-
 
 export default App;
