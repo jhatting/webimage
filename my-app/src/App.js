@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import "./App.css";
 
 const images = [
-  "https://via.placeholder.com/500x400.png?text=Image+1",
-  "https://example.com/image2.png",
-  "https://example.com/image3.jpg",
-  "https://example.com/image4.png",
-  "https://example.com/image5.jpg",
+  "https://kenzielynne.s3.us-east-2.amazonaws.com/video/video1.jpg",
+  "https://kenzielynne.s3.us-east-2.amazonaws.com/video/video2.jpg",
+  "https://kenzielynne.s3.us-east-2.amazonaws.com/video/video3.jpg",
+  "https://kenzielynne.s3.us-east-2.amazonaws.com/video/video1.jpg",
+  "https://kenzielynne.s3.us-east-2.amazonaws.com/video/video2.jpg",
 ];
 
 function App() {
